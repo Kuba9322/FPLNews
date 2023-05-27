@@ -123,34 +123,34 @@ i powinna zajmować większość dostępnej przestrzeni
         margin: 16px 0;
     }
     /*Usunięcie dekoracji elementów listy (kropki na początku)*/
-    .movie-list {
+    .article-list {
         list-style-type: none;
     }
-    /*Margines i ramka wokół pojedynczego filmu*/
-    .movie-list-item {
+    /*Margines i ramka wokół pojedynczego artykułu*/
+    .article-list-item {
         margin-bottom: 16px;
         display: flex;
         border: 1px #6d6d6d solid;
     }
     /*Plakat - usuniecie paddingu*/
-    .movie-list-item-poster {
+    .article-list-item-poster {
         display: block;
         max-width: 200px;
     }
-    /*Karta filmu*/
-    .movie-list-item-card {
+    /*Karta artykułu*/
+    .article-list-item-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 16px;
     }
-    .movie-list-item-content > * {
+    .article-list-item-content > * {
         margin: 8px 0;
     }
-    .movie-list-item-title {
+    .article-list-item-title {
         font-size: 1.6rem;
     }
-    .movie-list-item-rating {
+    .article-list-item-rating {
         font-size: 1.6rem;
     }
     /*Listing END*/
