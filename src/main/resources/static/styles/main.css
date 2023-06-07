@@ -131,6 +131,7 @@ i powinna zajmować większość dostępnej przestrzeni
         margin-bottom: 16px;
         display: flex;
         border: 1px #6d6d6d solid;
+        max-height: 600px;
     }
     /*Plakat - usuniecie paddingu*/
     .article-list-item-poster {
