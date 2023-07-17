@@ -16,6 +16,7 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    private String introduction;
     private String content;
     private LocalDateTime createTime;
     private LocalDateTime modifiedTime;

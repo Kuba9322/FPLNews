@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleService {
@@ -29,5 +30,9 @@ public class ArticleService {
                 .limit(numberOfArticles)
                 .map(ArticleDtoMapper::map)
                 .toList();
+    }
+
+    public Optional<ArticleDto> findArticleById(long id){
+        return articleRepository.findById(id).map(ArticleDtoMapper::map);
     }
 }
