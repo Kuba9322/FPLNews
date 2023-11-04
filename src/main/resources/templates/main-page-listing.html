@@ -22,7 +22,7 @@
                             <a href="#" th:href="@{|news/${article.id}|}" th:text="${article.title}">Guardiola: "Wygraliśmy ligę dzięki wsparciu społeczności FPL w Polsce.</a>
                         </h3>
                         <h4 th:text="${article.introduction}">Pop Guargiola uważa, że zwycięstwo w lidze Manchestoerowi City zapewniło wsparcie z Polski.</h4>
-                        <p th:text="${article.author}">D.Kumor</p>
+                        <p th:text="${article.author.getFullName()}">D.Kumor</p>
                     </div>
                     <div class="article-list-item-rating">
                         <i class="fa-solid fa-heart"></i>

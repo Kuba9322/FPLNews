@@ -1,0 +1,12 @@
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (1, 'Adam Małysz i tak skakał lepiej', 2, 5, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (2, 'Gdybym był taki szybki jak Mbappe to bym tam dobiegł', 3, 5, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (3, 'Wydali tyle pieniędzy na drużyną, a i tak nie wygrywają.', 1, 5, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (4, 'Zbigniew Boniek był lepszym piłkarzem.', 2, 1, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (5, 'Ja bym to strzelił.', 3, 1, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (6, 'Nie wiem kto pisał ten artykuł ale jest bardzo słaby.', 4, 2, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (7, 'Sprzedam Opla.', 5, 2, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (8, 'Losowy komentarz.', 3, 3, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (9, 'Wydali tyle pieniędzy na drużyną, a i tak nie wygrywają.', 2, 3, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (10, 'W takich butach to wiadomo, że nie strzeli.', 1, 4, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (11, 'Gortat kiedyś powiedział: nie ma szans na wygraną.', 4, 4, CURRENT_TIMESTAMP);
+INSERT INTO comment (id, content, author_id, article_id, create_time) VALUES (12, 'Iga najlepsza.', 5, 4, CURRENT_TIMESTAMP);

@@ -1,5 +1,9 @@
 package pl.sturnusdev.fantasypremierleaguenews.domain.article;
 
+import pl.sturnusdev.fantasypremierleaguenews.user.UserMapper;
+
+import static pl.sturnusdev.fantasypremierleaguenews.tools.LocalDateTimeToString.localDateTimeToString;
+
 public class ArticleDtoMapper {
     static ArticleDto map(Article article){
         return new ArticleDto(article.getId(),
@@ -8,6 +12,6 @@ public class ArticleDtoMapper {
                 article.getContent(),
                 article.getCreateTime(),
                 article.getModifiedTime(),
-                article.getAuthor().getFullName());
+                UserMapper.map(article.getAuthor()));
     }
 }
