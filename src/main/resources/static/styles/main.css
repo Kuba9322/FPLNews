@@ -51,7 +51,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .menu-item {
     width: 100%;
     padding: 16px;
-    border-bottom: 1px #00fff7 solid;
+    border-bottom: 1px #969696 solid;
     text-align: center;
     display: none;
 }
@@ -288,7 +288,7 @@ i powinna zajmować większość dostępnej przestrzeni
     font-style: italic;
 }
 
-.commen-author {
+.comment-author {
     color: rgb(150, 150, 150);
 }
 
@@ -323,4 +323,84 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 
-/*Movie.html END*/
+/*article.html END*/
+
+/*error pages START*/
+.error-container {
+    margin: 32px auto;
+}
+.error-container > * {
+    display: block;
+    text-align: center;
+}
+.error-header,
+.error-icon {
+    font-size: 2rem;
+    margin: 16px 0;
+}
+/*error pages END*/
+
+
+/*user-presentation page */
+.user-summary-info {
+    display: flex;
+    margin-top: 16px;
+    border: 1px #6d6d6d solid;
+}
+/*Mniejsza okładka na małych ekranach*/
+.user-avatar {
+    flex: 1;
+    object-fit: contain;
+    max-width: 200px;
+}
+/*Mniejsza okładka na małych ekranach*/
+.right-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column p {
+    margin: 4px 4px 4px 10px;
+    display: flex;
+    align-items: flex-start; /* Wyrównanie zawartości do góry */
+    gap: 10px; /* Margines między obiektami */
+    padding: 4px;
+}
+
+.team-logo {
+    max-width: 50px;
+    margin: 8px 8px 8px 10px;
+}
+/*textarea domyślnie nie dziedziczy czcionki z body*/
+textarea {
+    font-family: inherit;
+}
+/*etykiety i inputy jeden pod drugim z odstępami po bokach*/
+.mc-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+}
+/*odstępy między etykietami i inputami*/
+.mc-form > * {
+    margin-top: 8px;
+}
+/*większe inputy z paddingami*/
+.mc-form > input,
+.mc-form > textarea,
+.mc-form > button {
+    font-size: 1.2rem;
+    color: black;
+    padding: 8px;
+}
+.mc-form > button {
+    margin-top: 16px;
+    background-color: white;
+    color: #00ff99;
+    border: none;
+}
+.notification-bar {
+    text-align: center;
+    color: #ffc814;
+    padding: 8px 0;
+}

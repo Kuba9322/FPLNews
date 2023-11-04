@@ -1,6 +1,9 @@
 package pl.sturnusdev.fantasypremierleaguenews.domain.article;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import pl.sturnusdev.fantasypremierleaguenews.user.UserDto;
+import pl.sturnusdev.fantasypremierleaguenews.user.UserService;
 
 import java.util.Comparator;
 import java.util.List;
@@ -11,8 +14,11 @@ public class ArticleService {
 
     private ArticleRepository articleRepository;
 
-    public ArticleService(ArticleRepository articleRepository) {
+    private UserService userService;
+
+    public ArticleService(ArticleRepository articleRepository, UserService userService) {
         this.articleRepository = articleRepository;
+        this.userService = userService;
     }
 
     public List<ArticleDto> findAllArticles() {
@@ -22,6 +28,7 @@ public class ArticleService {
                 .map(ArticleDtoMapper::map)
                 .toList();
     }
+
     public List<ArticleDto> findFirstArticles(int numberOfArticles) {
         return articleRepository
                 .findAll()
@@ -32,7 +39,29 @@ public class ArticleService {
                 .toList();
     }
 
-    public Optional<ArticleDto> findArticleById(long id){
-        return articleRepository.findById(id).map(ArticleDtoMapper::map);
+    public Optional<ArticleDto> findArticleById(long id) {
+        return articleRepository
+                .findById(id)
+                .map(ArticleDtoMapper::map);
+    }
+
+    public List<ArticleDto> findArticlesByAuthor(UserDto user) {
+        return articleRepository
+                .findByAuthorId(user.getId())
+                .stream()
+                .map(ArticleDtoMapper::map)
+                .toList();
+    }
+
+    @Transactional
+    public void addArticle(ArticleDto article){
+        Article articleToSave = new Article();
+        articleToSave.setTitle(article.getTitle());
+        articleToSave.setIntroduction(article.getIntroduction());
+        articleToSave.setContent(article.getContent());
+        articleToSave.setCreateTime(article.getCreateTime());
+        articleToSave.setModifiedTime(article.getModifiedTime());
+        articleToSave.setAuthor(userService.findUserByUserDto(article.getAuthor()).orElseThrow());
+        articleRepository.save(articleToSave);
     }
 }

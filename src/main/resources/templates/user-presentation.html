@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <div class="user-summary-info">
+            <img src="../static/img/poster-placeholder.png"
+                 alt="avatar"
+                 class="user-avatar"
+            />
+            <div class="right-column">
+            <p class="user-summary-full-name" th:text="'Imię i Nazwisko: '+${author.getFullName()}">Imię i Nazwisko: John Doe</p>
+            <p class="user-summary-username" th:text="'Username: '+${author.getUsername()}">Username: johndoe</p>
+            <p class="movie-summary-join" th:text="'Data dołączenia: '+${author.getCreateTime()}">Data dołączenia: 2023-07-22</p>
+            <p class="user-summary-comments" th:text="'Dodanych komentarzy: '+${author.getUsername()}">Dodanych komentarzy: 123</p>
+            <p class="user-summary-content-added" th:text="'Dodanych treści: '+${articles.size()}">Dodanych treści: 17</p>
+            <p class="user-summary-teams-support" th:text="'Drużyny, którym kibicuje: '+${author.getUsername()}">Drużyny, którym kibicuje:</p>
+                <img src="../static/img/fc-basel-10670.png"
+                     alt="team-logo"
+                     class="team-logo"
+                />
+            </div>
+        </div>
+        <div class="right-column">
+            <h2> Dodane treści</h2>
+            <h3>↓ Artykuły ↓</h3>
+            <div th:each="article: ${articles}">
+                <a th:href="@{|/news/${article.id}|}" th:text="${article.title}">Tytuł</a>
+            </div>
+            <h3>↓ Komentarze ↓</h3>
+            <div class="comments">
+                <div class="comment" th:each="userComment: ${userComments}">
+                    <a th:href="@{|/news/${userComment.getArticle().getId()}|}" th:text="${userComment.getArticle().getTitle()}">Tytuł</a>
+                    <p class= "comment-content" th:text="${userComment.content}"> Uważam, że Ferguson ma rację w tym sporze. Makelele nie ma racji. </p>
+                    <div class="comment-icons">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <i class="comment-rating">134</i>
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

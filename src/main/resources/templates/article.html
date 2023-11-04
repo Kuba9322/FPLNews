@@ -10,7 +10,7 @@
 <div class="container">
   <main class="main-content" layout:fragment="content">
     <section class="article">
-      <h1 class="article-summary-title">Makelele ma dość Fergusona</h1>
+      <h1 class="article-summary-title" th:text="${article.title}">Makelele ma dość Fergusona</h1>
       <div class="article-summary">
         <img src="../static/img/poster-placeholder.png"
              th:src="@{/img/poster-placeholder.png}"
@@ -22,8 +22,8 @@
           <div>
             <p><i class="fa-solid fa-heart"></i> 134</p>
           </div>
-          <p class="article-summary-item" th:text="${article.getCreateTime()}">Data: 01.03.2001 </p>
-          <p class="article-summary-item" >Autor: <a href="#" th:text="${article.getAuthor()}">John Doe</a></p>
+          <p class="article-summary-item" th:text="${article.getCreateTimeString()}">Data: 01.03.2001 </p>
+          <p class="article-summary-item" >Autor: <a href="#" th:text="${article.getAuthor().getFullName()}">John Doe</a></p>
         </div>
         <div>
           <p class="article-intro" th:text="${article.getIntroduction()}">'Przed zbliżającym się sezonem Premier League jednym z ciekawszych zespołów, które wzbudzają zainteresowanie, jest ''Strikers United''. To utalentowana drużyna z wybitnym trenerem, uważana za jednego z głównych faworytów do zdobycia tytułu w angielskiej lidze. Czy będą w stanie spełnić oczekiwania? Sprawdźmy.'
@@ -45,30 +45,12 @@
       </div>
       <div class="comments">
         <h1> Komentarze:</h1>
-        <div class="comment">
-          <p class=commen-author href="#"> Jan Kapela: </p>
-          <p class= "comment-content"> Uważam, że Ferguson ma rację w tym sporze. Makelele nie ma racji. </p>
+        <div class="comment" th:each="articleComment: ${articleComments}">
+          <p class=comment-author th:text="|Dnia ${articleComment.createTime} ${articleComment.author.username} napisał:|" > Jan Kapela: </p>
+          <p class= "comment-content" th:text="${articleComment.content}"> Uważam, że Ferguson ma rację w tym sporze. Makelele nie ma racji. </p>
           <div class="comment-icons">
             <i class="fa-solid fa-circle-plus"></i>
             <i class="comment-rating">134</i>
-            <i class="fa-solid fa-circle-minus"></i>
-          </div>
-        </div>
-        <div class="comment">
-          <p class=commen-author href="#"> Daniel Kumor: </p>
-          <p class= "comment-content">  Nie ma racji. </p>
-          <div class="comment-icons">
-            <i class="fa-solid fa-circle-plus"></i>
-            <i class="comment-rating">-23</i>
-            <i class="fa-solid fa-circle-minus"></i>
-          </div>
-        </div>
-        <div class="comment">
-          <p class=commen-author href="#"> Jan Kapela: </p>
-          <p class= "comment-content"> Njalepszy i tak był Adam Małysz. </p>
-          <div class="comment-icons">
-            <i class="fa-solid fa-circle-plus"></i>
-            <i class="comment-rating">55</i>
             <i class="fa-solid fa-circle-minus"></i>
           </div>
         </div>

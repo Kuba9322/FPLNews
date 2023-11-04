@@ -4,23 +4,17 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
-    <changeSet id="0002-1" author="sturnusDev">
-        <createTable tableName="USERS">
+    <changeSet id="0003-1" author="sturnusDev">
+        <createTable tableName="comment">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="full_name" type="VARCHAR(100)">
-                <constraints unique="true"/>
+            <column name="content" type="VARCHAR(150)"/>
+            <column name="author_id" type="BIGINT">
             </column>
-            <column name="username" type="VARCHAR(100)">
-                <constraints unique="true"/>
-            </column>
-            <column name="email" type="VARCHAR(100)">
-                <constraints unique="true"/>
+            <column name="article_id" type="BIGINT">
             </column>
             <column name="create_time" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
-            <column name="modified_time" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
-            <column name="role" type="VARCHAR(100)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

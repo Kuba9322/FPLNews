@@ -45,33 +45,14 @@
             </div>
             <div class="comments">
                 <h1> Komentarze:</h1>
-                <div class="comment">
-                    <p class=commen-author href="#"> Jan Kapela: </p>
-                    <p class= "comment-content"> Uważam, że Ferguson ma rację w tym sporze. Makelele nie ma racji. </p>
+                <div class="comment" th:each="articleComment: ${articleComments}">
+                    <p class=comment-author th:text="${articleComments.author.username}" th:href="@{|author/${articleComments.author.username}|}"> Jan Kapela: </p>
+                    <p class= "comment-content" th:text="${articleComment.content}"> Uważam, że Ferguson ma rację w tym sporze. Makelele nie ma racji. </p>
                     <div class="comment-icons">
                         <i class="fa-solid fa-circle-plus"></i>
                         <i class="comment-rating">134</i>
                         <i class="fa-solid fa-circle-minus"></i>
                     </div>
-                </div>
-                <div class="comment">
-                    <p class=commen-author href="#"> Daniel Kumor: </p>
-                    <p class= "comment-content">  Nie ma racji. </p>
-                    <div class="comment-icons">
-                        <i class="fa-solid fa-circle-plus"></i>
-                        <i class="comment-rating">-23</i>
-                        <i class="fa-solid fa-circle-minus"></i>
-                    </div>
-                </div>
-                <div class="comment">
-                    <p class=commen-author href="#"> Jan Kapela: </p>
-                    <p class= "comment-content"> Njalepszy i tak był Adam Małysz. </p>
-                    <div class="comment-icons">
-                        <i class="fa-solid fa-circle-plus"></i>
-                        <i class="comment-rating">55</i>
-                        <i class="fa-solid fa-circle-minus"></i>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
