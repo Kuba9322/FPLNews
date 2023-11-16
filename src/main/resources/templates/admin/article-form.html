@@ -9,13 +9,15 @@
 <body>
 <main class="main-content" layout:fragment="content">
     <h2 class="list-heading">Dodaj nowy artykuł</h2>
-    <form action="" method="post" class="mc-form" th:object="${article}">
+    <form action="" method="post" class="mc-form" th:object="${article}" enctype="multipart/form-data">
         <label for="articleTitle">Tytuł</label>
         <input type="text" id="articleTitle" placeholder="Tytuł artykułu" th:field="*{title}">
         <label for="introduction">Wprowadznie - max 1000 znaków</label>
         <textarea id="introduction" rows="4" th:field="*{introduction}"></textarea>
         <label for="content">Treść - max 2500 znaków</label>
         <textarea id="content" rows="8" th:field="*{content}"></textarea>
+        <label for="image">Grafika do artykułu</label>
+        <input type="file" id="image" th:field="*{image}" accept="image/png, image/jpeg">
         <button type="submit">Dodaj</button>
     </form>
 </main>

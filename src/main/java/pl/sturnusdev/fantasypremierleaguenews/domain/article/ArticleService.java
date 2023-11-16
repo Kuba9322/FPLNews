@@ -2,6 +2,7 @@ package pl.sturnusdev.fantasypremierleaguenews.domain.article;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import pl.sturnusdev.fantasypremierleaguenews.storage.FileStorageService;
 import pl.sturnusdev.fantasypremierleaguenews.user.UserDto;
 import pl.sturnusdev.fantasypremierleaguenews.user.UserService;
 
@@ -13,12 +14,13 @@ import java.util.Optional;
 public class ArticleService {
 
     private ArticleRepository articleRepository;
-
     private UserService userService;
+    private final FileStorageService fileStorageService;
 
-    public ArticleService(ArticleRepository articleRepository, UserService userService) {
+    public ArticleService(ArticleRepository articleRepository, UserService userService, FileStorageService fileStorageService) {
         this.articleRepository = articleRepository;
         this.userService = userService;
+        this.fileStorageService = fileStorageService;
     }
 
     public List<ArticleDto> findAllArticles() {
@@ -54,14 +56,18 @@ public class ArticleService {
     }
 
     @Transactional
-    public void addArticle(ArticleDto article){
+    public void addArticle(ArticleSaveDto articleSaveDto){
         Article articleToSave = new Article();
-        articleToSave.setTitle(article.getTitle());
-        articleToSave.setIntroduction(article.getIntroduction());
-        articleToSave.setContent(article.getContent());
-        articleToSave.setCreateTime(article.getCreateTime());
-        articleToSave.setModifiedTime(article.getModifiedTime());
-        articleToSave.setAuthor(userService.findUserByUserDto(article.getAuthor()).orElseThrow());
+        articleToSave.setTitle(articleSaveDto.getTitle());
+        articleToSave.setIntroduction(articleSaveDto.getIntroduction());
+        articleToSave.setContent(articleSaveDto.getContent());
+        articleToSave.setCreateTime(articleSaveDto.getCreateTime());
+        articleToSave.setModifiedTime(articleSaveDto.getModifiedTime());
+        articleToSave.setAuthor(userService.findUserByUserDto(articleSaveDto.getAuthor()).orElseThrow());
+        if (articleSaveDto.getImage() != null){
+            String savedFileName = fileStorageService.saveImage(articleSaveDto.getImage());
+            articleToSave.setImage(savedFileName);
+        }
         articleRepository.save(articleToSave);
     }
 }

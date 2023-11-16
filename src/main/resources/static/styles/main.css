@@ -404,3 +404,7 @@ textarea {
     color: #ffc814;
     padding: 8px 0;
 }
+/*Biały kolor tekstu przy wyborze pliku*/
+.mc-form > input[type=file] {
+    color: white;
+}

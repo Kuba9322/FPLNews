@@ -12,6 +12,7 @@ public class ArticleDtoMapper {
                 article.getContent(),
                 article.getCreateTime(),
                 article.getModifiedTime(),
-                UserMapper.map(article.getAuthor()));
+                UserMapper.map(article.getAuthor()),
+                article.getImage());
     }
 }

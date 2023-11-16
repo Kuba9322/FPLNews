@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.sturnusdev.fantasypremierleaguenews.domain.article.ArticleDto;
+import pl.sturnusdev.fantasypremierleaguenews.domain.article.ArticleSaveDto;
 import pl.sturnusdev.fantasypremierleaguenews.domain.article.ArticleService;
 import pl.sturnusdev.fantasypremierleaguenews.user.UserService;
 
@@ -24,21 +24,21 @@ public class ArticleManageController {
 
     @GetMapping("admin/dodaj-artykuł")
     public String addArticleForm(Model model){
-        ArticleDto article = new ArticleDto();
+        ArticleSaveDto article = new ArticleSaveDto();
         model.addAttribute("article", article);
         return "admin/article-form";
     }
 
     @PostMapping("admin/dodaj-artykuł")
-    public String addArticle(ArticleDto article, RedirectAttributes redirectAttributes) {
-        article.setCreateTime(LocalDateTime.now());
-        article.setModifiedTime(LocalDateTime.now());
-        //to correct
-        article.setAuthor(userService.findUserByUsername("limak7373").orElseThrow());
-        articleService.addArticle(article);
+    public String addArticle(ArticleSaveDto articleSaveDto, RedirectAttributes redirectAttributes) {
+        articleSaveDto.setCreateTime(LocalDateTime.now());
+        articleSaveDto.setModifiedTime(LocalDateTime.now());
+        //setAuthor to correct
+        articleSaveDto.setAuthor(userService.findUserByUsername("limak7373").orElseThrow());
+        articleService.addArticle(articleSaveDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
-                "Artykuł \"%s\" został zapisany".formatted(article.getTitle()));
+                "Artykuł \"%s\" został zapisany".formatted(articleSaveDto.getTitle()));
         return "redirect:/admin";
     }
 }

@@ -14,7 +14,6 @@ import pl.sturnusdev.fantasypremierleaguenews.user.UserDto;
 import pl.sturnusdev.fantasypremierleaguenews.user.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ArticleController {
@@ -38,7 +37,7 @@ public class ArticleController {
         return "article";
     }
 
-    @GetMapping("/author/{username}")
+    @GetMapping("/user/{username}")
     public String getArticlesByAuthor(@PathVariable String username, Model model) {
         UserDto user = userService.findUserByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

@@ -22,6 +22,7 @@
                              referencedTableName="users"
                              referencedColumnNames="id"/>
             </column>
+            <column name="image" type="VARCHAR(100)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -12,8 +12,8 @@
     <section class="article">
       <h1 class="article-summary-title" th:text="${article.title}">Makelele ma dość Fergusona</h1>
       <div class="article-summary">
-        <img src="../static/img/poster-placeholder.png"
-             th:src="@{/img/poster-placeholder.png}"
+        <img src="../static/img/image-placeholder.png"
+             th:src="${article.image ne null} ? @{|/img/${article.image}|} : @{/img/image-placeholder.png}"
              alt="tytuł artykułu"
              th:alt="${article.title}"
              class="article-summary-cover"
